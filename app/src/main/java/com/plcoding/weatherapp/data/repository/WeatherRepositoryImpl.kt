@@ -1,15 +1,16 @@
 package com.plcoding.weatherapp.data.repository
 
-import com.plcoding.weatherapp.data.mappers.toWeatherInfo
-import com.plcoding.weatherapp.data.remote.WeatherApi
+import com.plcoding.weatherapp.data.mapper.toWeatherInfo
+import com.plcoding.weatherapp.data.remote.WeatherAPIService
+import com.plcoding.weatherapp.domain.model.WeatherInfo
 import com.plcoding.weatherapp.domain.repository.WeatherRepository
-import com.plcoding.weatherapp.domain.util.Resource
-import com.plcoding.weatherapp.domain.weather.WeatherInfo
+import com.plcoding.weatherapp.util.Resource
 import javax.inject.Inject
 
 class WeatherRepositoryImpl @Inject constructor(
-    private val api: WeatherApi
+    private val api: WeatherAPIService
 ): WeatherRepository {
+
 
     override suspend fun getWeatherData(lat: Double, long: Double): Resource<WeatherInfo> {
         return try {
